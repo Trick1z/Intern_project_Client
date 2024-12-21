@@ -1,0 +1,21 @@
+.title-header {
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+
+
+  .response {
+    background-color: rgb(255, 230, 121);
+    border-radius: 5px;
+
+    h1 {
+      margin: 10px;
+    }
+
+    pre {
+     padding: 15px;
+    }
+  }
+
+}

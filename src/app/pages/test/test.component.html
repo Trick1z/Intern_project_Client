@@ -1,0 +1,38 @@
+<div class="container-md" style="display: flex;justify-content: center;">
+
+  <div class="login-card col-md-5">
+
+    <div class="body-card">
+
+
+      <div class="input-box">
+
+        <h1>เข้าสู่ระบบ</h1>
+
+        <div class="input-group-lg login-input">
+          <h5>ชื่อผู้ใช้</h5>
+          <input [(ngModel)]="_userName" type="text" class="form-control text-box" placeholder="ชื่อผู้ใช้"
+            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+
+        <div class="empty"></div>
+
+        <div class="input-group-lg login-input">
+          <h5>รหัสผ่าน</h5>
+          <input [(ngModel)]="_userPw" id="password" type="text" class="form-control" placeholder="รหัสผ่าน"
+            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+
+      </div>
+
+      <div class="button">
+
+        <button (click)="postData(_userName,_userPw)" type="button" class="btn btn-primary btn-lg">เข้าสู่ระบบ</button>
+        <p>ลืมรหัสผ่าน ? <a href="/login"> คลิ้กที่นี้</a></p>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

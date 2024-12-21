@@ -1,0 +1,84 @@
+<!-- <div class="title-header">
+  <div class="title">
+    <h1>{{Title}}</h1>
+  </div>
+
+  <div class="description">
+    <p>{{title_description}}</p>
+  </div>
+</div> -->
+
+<div class="title-header">
+  <div class="title">
+    <h1>{{Title}}</h1>
+  </div>
+
+  <div class="description">
+    <p>{{title_description}}</p>
+  </div>
+
+  <table class="table table-bordered">
+
+    <!-- <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      <tr>
+        <th class="col-2" scope="row">วิธีการ</th>
+        <td colspan="2">{{ApiTitleBody.method}}</td>
+      </tr>
+      <tr>
+        <th scope="row">URL</th>
+        <td colspan="2">{{ApiTitleBody.url}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="title-header">
+
+  <div class="title">
+    <h1>ข้อมูล API</h1>
+  </div>
+
+  <div class="data-grid">
+    <dx-data-grid id="gridContainer" [dataSource]="ApiParameter"
+      [columns]="['parameter' , 'required', 'type', 'description']" [showBorders]="true">
+      <!-- <dxo-editing mode="row" [allowAdding]="false" [allowUpdating]="true" [allowDeleting]="true"></dxo-editing> -->
+    </dx-data-grid>
+  </div>
+
+
+</div>
+
+
+<div class="title-header">
+
+  <div class="title">
+    <h1>คำอธิบายชุดข้อมูล</h1>
+  </div>
+
+  <div class="data-grid">
+    <dx-data-grid id="gridContainer" [dataSource]="ApiDetail"
+      [columns]="['parameter' , 'description']" [showBorders]="true">
+      <!-- <dxo-editing mode="row" [allowAdding]="false" [allowUpdating]="true" [allowDeleting]="true"></dxo-editing> -->
+    </dx-data-grid>
+  </div>
+
+
+</div>
+
+<div class="title-header">
+
+  <h4>Response</h4>
+
+  <div class="response">
+    <pre>{{ApiJson}}</pre>
+  </div>
+
+</div>

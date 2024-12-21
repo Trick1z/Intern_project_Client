@@ -1,0 +1,120 @@
+<div class="topnav" id="target-top">
+  <div class="start">
+    <a class="active" href="#/content/category">Home</a>
+  </div>
+  <div class="end">
+    <div class="name">
+      <p>สวัสดี {{title_User}}</p>
+    </div>
+    <div (click)="logout()" class="logout">
+      <p>ออกจากระบบ</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" style="margin: 20px;">
+  <div class="col-3">
+    <div class="card-box Fixed">
+      <div class="title-card-box">
+        <div class="title " style="margin-bottom: 20px; display: flex; justify-content: space-around;">
+          <h6>TABLE OF CONTENTS</h6>
+          <p (click)="scrollToTop()">back to top</p>
+        </div>
+      </div>
+
+      <div class="card-box-list">
+        <div class="document-sidebar-toc" style="list-style: none; text-align: left;"
+          *ngFor="let item of _mainData.Value ; let i = index">
+
+          <li class="item" (click)="scrollToTarget(i)">
+            <p>{{item.SUB_TITLE}}</p>
+          </li>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- left col -->
+
+
+  <div class="col-9" style="padding: 20px;">
+    <div class="title-header">
+      <div class="title">
+        <h1>{{Title_Name}}</h1>
+        <p>{{Title_Des}}</p>
+
+      </div>
+    </div>
+
+    <div class="card-status">
+      <p class="status-txt">status</p>
+
+      <div class="status-button">
+        <h5 class="live">LIVE</h5>
+        <h5 class="open">OPEN</h5>
+      </div>
+
+      <p class="status-txt">CATEGORY / TAG</p>
+      <p style="margin: 10px 0; font-size: 1rem; color: #929fb1">Unassigned</p>
+    </div>
+
+
+    <div class="empty"></div>
+
+    <div class="loop" *ngFor="let i = index ; let item of _mainData.Value ">
+      <div class="head1" id="target-content_{{i}}">
+        <div class="title-header">
+          <div class="empty"></div>
+          <div class="">
+            <h1>{{item.SUB_TITLE}}</h1>
+            <p>{{item.SUB_TITLE_DESCRIPTION}}</p>
+          </div>
+
+          <div class="table" style="margin: 20px 0 50px 0;">
+            <table bordered cTable>
+              <tbody>
+                <tr>
+                  <th scope="row" class="col-2">วิธีการ</th>
+                  <td>{{item.METHOD}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">URL</th>
+                  <td>{{item.URL}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-bottom: 50px ;">
+            <div class="" style="margin: 20px 0; justify-content: space-between; display: flex;">
+              <h2>ข้อมูล API</h2>
+              <div class="empty-box"></div>
+            </div>
+
+            <div class="data-grid" style="margin: 30px 0;">
+              <dx-data-grid id="gridContainer" [dataSource]="_display[i].Value"> <dxo-editing mode="row"
+                  [allowAdding]="false" [allowUpdating]="false" [allowDeleting]="false">
+                </dxo-editing>
+
+                <dxi-column dataField="PARAMETER_NAME" [width]="150"></dxi-column>
+                <dxi-column dataField="PARAMETER_STATUS" [width]="150"></dxi-column>
+                <dxi-column dataField="PARAMETER_TYPE" [width]="100"></dxi-column>
+                <dxi-column dataField="PARAMETER_DESCRIPTION"></dxi-column>
+              </dx-data-grid>
+
+            </div>
+          </div>
+
+
+          <h2>Response</h2>
+          <div class="json-res" style="margin: 30px 0;">
+            <pre>{{jsonText[i].Value[0].JSON}}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

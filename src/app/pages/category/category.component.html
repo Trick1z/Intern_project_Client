@@ -1,0 +1,142 @@
+<div class="topnav">
+  <div class="start">
+
+    <!-- <a href="/list">list</a> -->
+  </div>
+  <!-- <a href="/list-linkage">linkage</a> -->
+  <!--<a href="#about">About</a> -->
+  <div class="end">
+    <div class="name">
+      <p>สวัสดี {{title_User}}</p>
+    </div>
+    <div (click)="logout()" class="logout">
+      <p>ออกจากระบบ</p>
+    </div>
+    <!-- <p>Hi</p> -->
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="col-3 left">
+    <!-- <div class="card-box">
+      <div class="title-card-box">
+        <div class="title">TABLE OF CONTENTS</div>
+      </div>
+
+      <div class="card-box-list">
+        <div class="document-sidebar-toc" style="list-style: none; text-align: left;">
+
+          <li class="item">
+            <p>1.การเรียกข้อมูลบุคคลจากฐานข้อมูล Linkage (5000)</p>
+          </li>
+          <li class="item">
+            <p>2.การเรียกข้อมูลบุคคลจากฐานข้อมูล Linkage (6000)</p>
+          </li>
+          <li class="item">
+            <p>3.การตรวจสอบสถานะ</p>
+          </li>
+
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="card-box Fixed">
+      <div class="title-card-box">
+        <div class="title " style="margin-bottom: 20px; display: flex; justify-content: space-around;">
+          <h6>TABLE OF CONTENTS</h6>
+          <p>^</p>
+        </div>
+      </div>
+
+      <div class="card-box-list">
+        <div class="document-sidebar-toc" style="list-style: none; text-align: left;">
+
+          <li class="item">
+            <p (click)="onShowAll()">ข้อมูลทั้งหมด ({{this.linkage + this.other}})</p>
+          </li>
+          <li class="item">
+            <p (click)="onShowLinkages()">ข้อมูล Linkage ({{this.linkage}})</p>
+          </li>
+          <li class="item">
+            <p (click)="onShowOther()">อื่นๆ ({{this.other}})</p>
+          </li>
+          <!-- <li class="item">
+            <p>3.การตรวจสอบสถานะ</p>
+          </li> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-9 right">
+    <div class="txt-gdx">
+      <h3>GDX</h3>
+    </div>
+
+    <div class="top-txt">
+      <h3>
+        ศูนย์แลกเปลี่ยนข้อมูลกลางภาครัฐ (Government Data Exchange Center : GDX )
+      </h3>
+      <p>ระบบสำหรับเรียกดูข้อมูลจากหน่วยงานภาครัฐต่างๆ ในรูปแบบเอกสารดิจิทัล และสามารถ download เป็น PDF ได้
+        โดยใช้แทนสำเนาเอกสารได้</p>
+    </div>
+
+    <div *ngIf="showLinkages == true " class="card-container">
+      <div class="" *ngFor="let item of linkageData.Value , let num = index;" (click)="goToLinkageUrl(num)">
+        <div class="card-tag">
+
+          <div class="data">
+            <h3>{{item.TITLE}}</h3>
+            <p>{{item.TITLE_DESCRIPTION}}</p>
+          </div>
+          <div class="tag">LIVE</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showOther == true " class="card-container">
+      <div class="" *ngFor="let item of otherData.Value ; let i = index">
+        <div class="card-tag" (click)="goToOtherUrl(i)">
+          <div class="data">
+            <h3>{{item.TITLE}}</h3>
+            <p>{{item.TITLE_DESCRIPTION}}</p>
+          </div>
+          <div class="tag">LIVE</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- all -->
+    <div *ngIf="showAll == true" class="card-container">
+
+      <div class="" *ngFor="let item of linkageData.Value ; let i = index">
+        <div class="card-tag" (click)="goToLinkageUrl(i)">
+          <div class="data">
+            <h3>{{item.TITLE}}</h3>
+            <p>{{item.TITLE_DESCRIPTION}}</p>
+          </div>
+          <div class="tag">LIVE</div>
+        </div>
+      </div>
+
+      <div class="" *ngFor="let item of otherData.Value ; let i = index">
+        <div class="card-tag" (click)="goToOtherUrl(i)">
+          <div class="data">
+            <h3>{{item.TITLE}}</h3>
+            <p>{{item.TITLE_DESCRIPTION}}</p>
+          </div>
+          <div class="tag">LIVE</div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>

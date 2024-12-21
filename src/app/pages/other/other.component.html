@@ -1,0 +1,142 @@
+<div class="topnav" id="target-top">
+  <div class="start">
+    <a class="active" href="#/content/category">Home</a>
+    <!-- <a href="/list">list</a> -->
+  </div>
+  <!-- <a href="/list-linkage">linkage</a> -->
+  <!--<a href="#about">About</a> -->
+  <div class="end">
+    <div class="name">
+      <p>สวัสดี {{title_User}}</p>
+    </div>
+    <div (click)="logout()" class="logout">
+      <p>ออกจากระบบ</p>
+    </div>
+    <!-- <p>Hi</p> -->
+  </div>
+</div>
+
+
+
+<div class="row" style="margin: 20px;">
+  <div class="col-3">
+    <div class="card-box Fixed">
+      <div class="title-card-box">
+        <div class="title " style="margin-bottom: 20px; display: flex; justify-content: space-around;">
+          <h6>TABLE OF CONTENTS</h6>
+          <p (click)="scrollToTop()">back to top</p>
+        </div>
+      </div>
+
+      <div class="card-box-list">
+        <div class="document-sidebar-toc" style="list-style: none; text-align: left;"
+          *ngFor="let i = index; let item  of subTitleData.Value">
+
+          <li class="item" (click)="scrollToTarget(i)">
+            <p>{{item.SUB_TITLE}}</p>
+          </li>
+          <!-- <li class="item" (click)="scrollToTarget(2)">
+            <p>2.การเรียกข้อมูลบุคคลจากฐานข้อมูล Linkage (6000)</p>
+          </li>
+          <li class="item" (click)="scrollToTarget(3)">
+            <p>3.การตรวจสอบสถานะ</p>
+          </li> -->
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- left col -->
+
+
+  <div class="col-9" style="padding: 20px;">
+    <div class="title-header">
+      <div class="title">
+        <h1>5.3 ข้อมูลนิติบุคคล กรมพัฒนาธุรกิจการค้า(DBD)</h1>
+        <p>รายละเอียด Web Service ข้อมูลนิติบุคคล (Data Dictionary) ประกอบด้วย ข้อมูลนิติบุคคล,
+          ข้อมูลและหน้าเอกสารผู้ถือหุ้น, ข้อมูลงบการเงิน, ข้อมูลและหน้าเอกสารหนังสือบริคณห์สนธิ และเอกสารประกอบ,
+          ข้อมูลวัตถุประสงค์, ข้อมูลทะเบียนพาณิชย์, ข้อมูลการประกอบธุรกิจของคนต่างด้าว, ข้อมูลทะเบียนหลักประกันธุรกิจ
+        </p>
+
+      </div>
+    </div>
+
+    <div class="card-status">
+      <p class="status-txt">status</p>
+
+      <div class="status-button">
+        <h5 class="live">LIVE</h5>
+        <h5 class="open">OPEN</h5>
+      </div>
+
+      <p class="status-txt">CATEGORY / TAG</p>
+      <p style="margin: 10px 0; font-size: 1rem; color: #929fb1">Unassigned</p>
+    </div>
+
+
+    <div class="empty"></div>
+
+
+    <!-- <div class="contentcard">
+      <div class="content_0">
+
+
+      </div>
+    </div> -->
+
+
+    <div class="head1" *ngFor="let i = index , let item of subTitleData.Value">
+      <div class="title-header">
+        <h3 id="target-content_{{i}}">{{item.SUB_TITLE}}</h3>
+
+
+        <div class="table" style="margin: 10px 0;">
+          <p>API</p>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>{{item.URL}}</td>
+              </tr>
+              <tr>
+                <td>{{item.SUB_TITLE_DESCRIPTION}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="json-body">
+          <h6 style="margin: 20px 0;">Response</h6>
+
+          <div class="json-res">
+            <pre style="padding: 10px; border-radius: 10px;">{{this.jsonData[i].Value[0].JSON}}</pre>
+          </div>
+        </div>
+
+
+
+        <div class="metaData" style="margin: 30px 0;">
+          <h6>คำอธิบายชุดข้อมูล</h6>
+
+          <div class="data-grid" style="margin: 30px 0;">
+            <dx-data-grid id="gridContainer" [dataSource]="metaData[i].Value"> <dxo-editing mode="row"
+                [allowAdding]="false" [allowUpdating]="false" [allowDeleting]="false">
+              </dxo-editing>
+
+              <dxi-column dataField="META_NAME" [width]="180"></dxi-column>
+              <dxi-column dataField="META_DETAIL"></dxi-column>
+            </dx-data-grid>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
